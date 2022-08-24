@@ -1,9 +1,8 @@
-import { chakra, useToken } from "@chakra-ui/react";
+import { chakra } from "@chakra-ui/react";
 import * as React from "react";
 
 export const Logo = (props) => {
-  const { iconColor = "currentColor", ...rest } = props;
-  const color = useToken("colors", iconColor);
+  const { ...rest } = props;
   return (
     <chakra.svg aria-hidden viewBox="0 0 167 33" fill="#E57CD8" {...rest}>
       <path d="M103.51 25.802a10.27 10.27 0 01-1.36.084c-1.515 0-2.651-.35-3.409-1.05-.757-.702-1.136-1.924-1.136-3.665V10.586h-3.614V8.754h3.614V4.208h2.1v4.546h4.992v1.832h-4.992v10.686c0 .905.184 1.578.551 2.02.367.44 1.033.66 1.997.66.528 0 .987-.021 1.377-.067.39-.045.78-.102 1.17-.17v1.833c-.436.113-.866.197-1.29.254"></path>

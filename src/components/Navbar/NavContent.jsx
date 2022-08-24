@@ -4,14 +4,13 @@ import {
   Flex,
   HStack,
   useDisclosure,
-  VisuallyHidden,
   useColorModeValue as mode,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { Logo } from "./Logo";
 import { NavLink } from "./NavLink";
 import { NavMenu } from "./NavMenu";
-import { Submenu } from "./Submenu";
+import { DesktopSubmenu, MobileSubMenu } from "./Submenu";
 import { ToggleButton } from "./ToggleButton";
 import { links } from "./_data";
 
@@ -26,7 +25,7 @@ const MobileNavContext = (props) => {
         {...props}
       >
         <Box as="a" rel="home">
-          <Logo h="24px" iconColor="blue.400" />
+          <Logo h="30px" />
         </Box>
         <Box
           visibility={{
@@ -41,16 +40,31 @@ const MobileNavContext = (props) => {
       <NavMenu animate={isOpen ? "open" : "closed"}>
         {links.map((link, idx) =>
           link.children ? (
-            <Submenu.Mobile key={idx} link={link} />
+            <MobileSubMenu key={idx} link={link} />
           ) : (
             <NavLink.Mobile key={idx} href={link.href}>
               {link.label}
             </NavLink.Mobile>
           )
         )}
-        <Button colorScheme="blue" w="full" size="lg" mt="5">
-          Try for free
-        </Button>
+        <Box display="flex" alignItems="center" justifyContent="center">
+          <Button borderRadius="25px" colorScheme="blue" size="lg" mt="5">
+            Try for free
+          </Button>
+        </Box>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          my="5"
+          fontWeight="bold"
+          _hover={{
+            color: "#d11b59",
+            cursor: "pointer",
+          }}
+        >
+          Log in
+        </Box>
       </NavMenu>
     </>
   );
@@ -66,8 +80,7 @@ const DesktopNavContent = (props) => {
     >
       <Flex className="nav-content__desktop" align="center" gap="2rem">
         <Box as="a" href="#" rel="home">
-          <VisuallyHidden>Envelope</VisuallyHidden>
-          <Logo h="8" iconColor="blue.500" />
+          <Logo h="8" />
         </Box>
         <HStack
           as="ul"
@@ -78,7 +91,7 @@ const DesktopNavContent = (props) => {
           {links.map((link, idx) => (
             <Box as="li" key={idx} id={`nav__menuitem-${idx}`}>
               {link.children ? (
-                <Submenu.Desktop link={link} />
+                <DesktopSubmenu link={link} />
               ) : (
                 <NavLink.Desktop href={link.href}>{link.label}</NavLink.Desktop>
               )}
@@ -113,7 +126,13 @@ const DesktopNavContent = (props) => {
         >
           Log in
         </Box>
-        <Button as="a" href="#" colorScheme="blue" fontWeight="bold">
+        <Button
+          as="a"
+          href="#"
+          colorScheme="blue"
+          fontWeight="bold"
+          borderRadius="25px"
+        >
           Try for free
         </Button>
       </HStack>

@@ -16,13 +16,13 @@ export const SubmenuItem = (props) => {
       className="group"
       href={href}
       m="-3"
-      p="3"
+      p="2"
       display="flex"
       alignItems="flex-start"
       transition="all 0.2s"
       rounded="lg"
       _hover={{
-        bg: mode("white", "white"),
+        bg: mode("#fce4d8", "white"),
       }}
       _focus={{
         shadow: "outline",
