@@ -9,7 +9,7 @@ import {
 import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 
 const SubNavbar = () => {
-  let time = "00:00:00";
+  
   return (
     <Flex
       bg="#fcf7f5"

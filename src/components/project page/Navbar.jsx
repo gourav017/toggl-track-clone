@@ -7,6 +7,8 @@ import {
   BsArrowRight
 } from "react-icons/bs";
 import {GrAddCircle} from 'react-icons/gr'
+import ProductForm from './productsForm/ProductForm';
+
 
 const Navbar = () => {
     let project=false
@@ -22,7 +24,7 @@ const Navbar = () => {
       <Center w="20%">
         <Text color="black" >Projects</Text>
       </Center>
-    <Button bg="pink.300">+ New Project</Button>
+    <ProductForm/>
     </Flex>
   );
 }

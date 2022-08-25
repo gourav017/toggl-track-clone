@@ -1,0 +1,32 @@
+{
+  "product-page": [
+    {
+      "id": 2,
+      "product_name": "fb clone",
+      "client": "mark",
+      "time": 8,
+      "Billable_rate": 15
+    },
+    {
+      "id": 3,
+      "product_name": "vs code clone",
+      "client": "nobody",
+      "time": 47,
+      "Billable_rate": 95
+    },
+    {
+      "product_name": "apple clone project",
+      "client": "apple cto mr x",
+      "Billable_rate": "09.00",
+      "time": "212121",
+      "id": 4
+    },
+    {
+      "product_name": "toggle track product page",
+      "client": "gourav",
+      "Billable_rate": "100 usd",
+      "time": "23",
+      "id": 8
+    }
+  ]
+}
