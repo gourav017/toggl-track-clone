@@ -23,7 +23,7 @@
     display: flex;
     margin-top: 80px;
     gap:20px;
-    height: 700px;
+    height: 800px;
 }
 .line1{
     width: 240px;
@@ -38,10 +38,11 @@
 }
 .inputbox:focus{
     background-color:beige;
+    color: black;
 }
 .signupbox3{
     width: 600px;
-    height: 600px;
+    height: 700px;
     padding-top: 20px;
     /* text-align: center; */
     justify-content: center;
@@ -49,6 +50,13 @@
     padding-left: 50px;
     background-color: #2c1338;
 }
+.submit{
+    width: 500px;
+    background-color: #e57cd8;
+    height: 50px;
+    border-radius: 20px;
+}
 .submit:hover{
     background-color: #e57cd8;
+    color: black;
 }

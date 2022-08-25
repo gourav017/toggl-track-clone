@@ -6,9 +6,21 @@ import { Box, Flex, Text } from '@chakra-ui/layout';
 import { Button } from '@chakra-ui/button';
 import { Image } from '@chakra-ui/image';
 import { Input } from '@chakra-ui/input';
+import { useForm } from "react-hook-form";
+import axios from "axios"
 import Navbar from './navbar/Navbar';
 
 const Signup = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data =>{
+        console.log(data);
+        const url="Enter your url"
+        axios.post(url,data).then((res)=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err.message)
+        })
+    }
   return (
     <div className="signup" >
         <Navbar/>
@@ -37,29 +49,31 @@ const Signup = () => {
                 </div>
                 <br/>
                 <Box>
-                    <form>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="">UserName</label>
                     <br />
-                    <input type="text" className='inputbox'  placeholder="Username"/>
+                    <input type="text" className='inputbox'  placeholder="Username" {...register("name",{ required: true })}/>
+                    {errors.name && <span>This field is required</span>}
                     <br />
                     <br />
                     <label htmlFor="">Email</label>
                     <br />
-                    <input type="text" className='inputbox'  placeholder="Email"/>
+                    <input type="text" className='inputbox'  placeholder="Email" {...register("email", { required: true })}/>
+                    {errors.email && <span>This field is required</span>}
                     <br />
                     <br />
                     <label htmlFor="">Password</label>
                     <br />
-                    <input type="password" className='inputbox'  placeholder="password"/>
+                    <input type="password" className='inputbox'  placeholder="password" {...register("password", { required: true,minLength:5 })}/>
+                    {errors.password && <span>This field is required</span>}
                     <br />
                     <br />
-                    <Input type="submit" className='submit' style={{width:"500px", backgroundColor:"#e57cd8",height:"50px", borderRadius:"20px"}} value="Signup via email"  placeholder="password"/>
+                    <input type="submit" className='submit'  value="Signup via email"  placeholder="password"/>
                     <br />
                     <br />
                     <p >By signing up, you agree to our terms of service, privacy policy and to receiving marketing communication from Toggl Track. You can opt out anytime.</p>
                     </form>
                     <br />
-                    
                 </Box>
             </Box>
             <Box>
