@@ -18,15 +18,25 @@ import {
   DeleteproductApi,
   GetproductApi,
 } from "../../store/productreducer/products.action";
+import ProductForm from "./productsForm/ProductForm";
+import EditdataForm from "./productsForm/EditdataForm";
 
-const Threedotsbtn = ({ id, editid }) => {
+const Threedotsbtn = ({
+  id,
+  editid,
+  product_name,
+  client,
+  time,
+  billable_rate,
+}) => {
   const dispatch = useDispatch();
 
   const handledelete = (id) => {
     dispatch(DeleteproductApi(id)).then(() => dispatch(GetproductApi()));
   };
 
-  const handleedit = (editid) => {};
+  let edit = true;
+
   return (
     <Popover>
       <PopoverTrigger>
@@ -46,13 +56,13 @@ const Threedotsbtn = ({ id, editid }) => {
         >
           delete
         </Button>
-        <Button
-          colorScheme="teal"
-          variant="outline"
-          onClick={() => handleedit(editid)}
-        >
-          edit
-        </Button>
+        <EditdataForm
+          id={editid}
+          product_name={product_name}
+          client={client}
+          time={time}
+          billable_rate={billable_rate}
+        />
       </PopoverContent>
     </Popover>
   );

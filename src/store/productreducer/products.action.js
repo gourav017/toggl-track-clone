@@ -1,5 +1,11 @@
 import axios from "axios";
-import { DELETE_PRODUCT, GET_PRODUCTS, POST_PRODUCT } from "./products.type";
+import {
+  DELETE_PRODUCT,
+  EDIT_PRODUCT,
+  GET_PRODUCTS,
+  POST_PRODUCT,
+  SEARCH_BY_QUERY,
+} from "./products.type";
 
 export const GetproductApi = () => async (dispatch) => {
   try {
@@ -41,6 +47,38 @@ export const DeleteproductApi = (id) => async (dispatch) => {
       payload: respone.data,
     });
     return respone.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const EditProductApi = (id, params) => async (dispatch) => {
+  try {
+    const response = await axios.put(
+      `http://localhost:8080/product-page/${id}`,
+      params
+    );
+    dispatch({
+      type: EDIT_PRODUCT,
+      payload: response.data,
+    });
+    return response.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const SearchbyQueryApi = (query) => async (dispatch) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:8080/product-page?q=${query}`
+    );
+    dispatch({
+      type: SEARCH_BY_QUERY,
+      payload: response.data,
+    });
+
+    return response.data;
   } catch (e) {
     console.log(e);
   }

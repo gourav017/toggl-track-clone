@@ -23,10 +23,25 @@ import {
   AccordionIcon,
 } from "@chakra-ui/accordion";
 import { useDispatch } from "react-redux";
-import { GetproductApi, Postproduct } from "../../../store/productreducer/products.action";
+import {
+  EditProductApi,
+  GetproductApi,
+} from "../../../store/productreducer/products.action";
 
-const ProductForm = ({id,edit}) => {
-  const [form, setform] = useState({});
+const EditdataForm = ({
+  id,
+  product_name,
+  client,
+  time,
+  Billable_rate,
+}) => {
+  const [form, setform] = useState({
+    product_name,
+    client,
+    time,
+    Billable_rate,
+  });
+ 
   const dispatch = useDispatch();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -42,17 +57,16 @@ const ProductForm = ({id,edit}) => {
     });
   };
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form);
-    dispatch(Postproduct(form)).then(()=>dispatch(GetproductApi()))
+    // console.log(form);
+    dispatch(EditProductApi(id,form)).then(()=>dispatch(GetproductApi()))
   };
 
   return (
     <>
-      <Button onClick={onOpen} bg="pink.600"> + New Project
-      
+      <Button onClick={onOpen} bg="pink.600">
+        edit
       </Button>
 
       <Modal
@@ -63,7 +77,7 @@ const ProductForm = ({id,edit}) => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Project Form</ModalHeader>
+          <ModalHeader>Edit your project</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <form onSubmit={handleSubmit}>
@@ -157,7 +171,12 @@ const ProductForm = ({id,edit}) => {
                 </AccordionItem>
               </Accordion>
 
-              <input  type="submit" colorScheme="blue" mr={3} onClick={onClose} />
+              <input
+                type="submit"
+                colorScheme="blue"
+                mr={3}
+                onClick={onClose}
+              />
             </form>
           </ModalBody>
 
@@ -170,4 +189,4 @@ const ProductForm = ({id,edit}) => {
   );
 };
 
-export default ProductForm;
+export default EditdataForm;

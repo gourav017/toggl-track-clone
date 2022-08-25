@@ -26,10 +26,11 @@ const Products = () => {
 
   return (
     <div>
-      Products
       {data.map((d) => (
-        <TableContainer>
-          <Table size="sm">
+        <TableContainer ml="15%">
+          <Table
+            size="sm"
+          >
             <Thead>
               <Tr>
                 <Th>PROJECT</Th>
@@ -40,12 +41,20 @@ const Products = () => {
               </Tr>
             </Thead>
             <Tbody>
-              <Tr style={{display:"flex" , gap:"15px", justifyContent:"space-between"}}>
+              <Tr>
                 <Td>{d.product_name}</Td>
                 <Td>{d.client}</Td>
                 <Td>{d.time}</Td>
+                <Td>{d.Billable_rate}</Td>
                 <Td>
-                  <Threedotsbtn id={d.id} editid={d.id}/>
+                  <Threedotsbtn
+                    id={d.id}
+                    editid={d.id}
+                    product_name={d.product_name}
+                    client={d.client}
+                    time={d.time}
+                    Billable_rate={d.Billable_rate}
+                  />
                 </Td>
               </Tr>
             </Tbody>

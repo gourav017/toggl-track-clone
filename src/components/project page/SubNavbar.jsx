@@ -7,6 +7,7 @@ import {
   AiOutlineLeft,
 } from "react-icons/ai";
 import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import FilterButtons from "./FilterButtons";
 
 const SubNavbar = () => {
   
@@ -34,10 +35,10 @@ const SubNavbar = () => {
             </MenuList>
           </Menu>
           <Text>Filter by:</Text>
-          <Button bg="none">Client</Button>
-          <Button bg="none">Team</Button>
-          <Button bg="none">Billable</Button>
-          <Button bg="none">Project name</Button>
+          <FilterButtons btnname="Client" />
+          <FilterButtons btnname="Team" />
+          <FilterButtons btnname="Billable" />
+          <FilterButtons btnname="Project name" />
         </Center>
     
       </Flex>
