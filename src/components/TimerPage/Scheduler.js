@@ -1,28 +1,60 @@
-import { Box, Flex } from '@chakra-ui/react'
-import React from 'react'
+import { Flex,Text,Box,Center } from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react'
+import { formatAMPM } from './Time'
+import { BsFillTagFill, BsCurrencyDollar, BsFolderFill } from "react-icons/bs";
+import { AiFillPlayCircle } from "react-icons/ai";
 
 
-const Scheduler = () => {
-     let d = new Date();
-     let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
-    let dateandday = [
-      `${d.getDate() - 3} ${days[d.getDay()-3]}`,
-      `${d.getDate() - 2} ${days[d.getDay()-2]}`,
-      `${d.getDate() - 1} ${days[d.getDay()-1]}`,
-      `${d.getDate() - 0} ${days[d.getDay()]}`,
-      `${d.getDate() +1}  ${days[d.getDay()+1]}`,
-      `${d.getDate() +2} ${days[d.getDay()+2]}`,
-      `${d.getDate() +3} ${days[d.getDay()+3]}`,
-    ];
-   
-    // let date=[,d.getDate()-2,d.getDate()-1,d.getDate(),d.getDate()+1,d.getDate()+2,d.getDate()+3]
+ const Scheduler = ({send,getdata,data}) => {
+
+
+    useEffect(()=>{
+      getdata()
+    },[])  
   return (
     <div style={{ marginLeft: "15%" }}>
-      <Flex justifyContent="space-evenly">
-        {dateandday.map((e) => {
-          return <Box>{e}</Box>;
-        })}
-      </Flex>
+    {data.map((e)=>{
+      return (
+        <Flex
+        key={e.id}
+          color="white"
+          _hover={{ color: "#7e6e85" }}
+          h="60px"
+          borderBottom="2px"
+          borderColor="blackAlpha.400"
+          p="15px 2px 10px 15px"
+          justifyContent="space-between"
+        >
+          <Flex gap="10px">
+            <Text color="black">{e.project}</Text>
+            <Center className="icon">
+              <BsFolderFill />
+            </Center>
+          </Flex>
+
+          <Flex gap="15px" mr="70px">
+            <Center className="icon">
+              <BsFillTagFill />
+            </Center>
+            <Center className="icon">
+              <BsCurrencyDollar />
+            </Center>
+
+            <Box as="div" w="160px">
+              <Text color="black">
+                {formatAMPM(new Date())}-{formatAMPM(new Date())}
+              </Text>
+            </Box>
+
+            <Text color="black">{e.stopat}</Text>
+
+            <Center>
+              <AiFillPlayCircle />
+            </Center>
+          </Flex>
+        </Flex>
+      );
+    })}
     </div>
   );
 }

@@ -34,7 +34,7 @@ const SubNav = () => {
       p="20px"
       gap="20px"
     >
-      <Flex justifyContent="space-between" alignItem="center">
+      <Flex justifyContent="space-between" alignItems="center">
         <Center>
           <Text>This week</Text>
         </Center>
