@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import NavbarMain from "./NavbarMain";
 
-const dummy = () => {
+function Navbar() {
   return (
-    <div>dummy
-        <h1>heloo dummy</h1>
-    </div>
-  )
+    <>
+      <NavbarMain />
+    </>
+  );
 }
 
-export default dummy
+export default Navbar;
