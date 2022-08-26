@@ -13,6 +13,7 @@ import { NavMenu } from "./NavMenu";
 import { DesktopSubmenu, MobileSubMenu } from "./Submenu";
 import { ToggleButton } from "./ToggleButton";
 import { links } from "./_data";
+import { Link } from "react-router-dom";
 
 const MobileNavContext = (props) => {
   const { isOpen, onToggle } = useDisclosure();
@@ -116,15 +117,13 @@ const DesktopNavContent = (props) => {
         </Box>
 
         <Box
-          as="a"
-          href="#"
           color={mode("white", "blue.300")}
           fontWeight="bold"
           _hover={{
             color: "#cb7bc6",
           }}
         >
-          Log in
+          <Link to="/login">Log in</Link>
         </Box>
         <Button
           as="a"
