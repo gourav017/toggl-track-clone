@@ -1,0 +1,32 @@
+{
+  "product-page": [
+    {
+      "product_name": "apple clone project",
+      "client": "apple ceo",
+      "time": "60 min",
+      "Billable_rate": "99999",
+      "id": 1
+    },
+    {
+      "product_name": "chiken pizza",
+      "client": "chikken",
+      "time": "12",
+      "Billable_rate": "000000",
+      "id": 2
+    },
+    {
+      "product_name": "gourav sahu",
+      "client": "bb",
+      "time": "546",
+      "Billable_rate": "45645",
+      "id": 3
+    },
+    {
+      "product_name": "gourav",
+      "client": "gourav sahgu",
+      "time": "121",
+      "Billable_rate": "99.08",
+      "id": 4
+    }
+  ]
+}
