@@ -21,9 +21,7 @@ const FilterButtons = ({btnname}) => {
     const dispatch = useDispatch();
 
     const handlesearch =()=>{
-        setquery(
-            query
-        )
+        
     }
 
     useEffect(() => {
