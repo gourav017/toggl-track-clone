@@ -7,9 +7,15 @@ function Navbar() {
   return (
     <>
       {screen > 900 ? <TopSection /> : null}
-      <nav style={{ position: "sticky", width: "100%", top: "0" }}>
+      <div
+        style={
+          screen > 900
+            ? { position: "sticky", width: "100%", top: "0" }
+            : { width: "100%" }
+        }
+      >
         <NavbarMain />
-      </nav>
+      </div>
     </>
   );
 }

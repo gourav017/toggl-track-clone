@@ -130,7 +130,6 @@ export const MobileSubMenu = (props) => {
             display: "grid",
             gridTemplateColumns: "1fr",
             padding: "1rem",
-            overflowY: "scroll",
           }}
         >
           <div>
