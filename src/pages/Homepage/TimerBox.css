@@ -1,0 +1,13 @@
+.timer-box-animation {
+  animation-name: hand;
+  animation-duration: 1s;
+}
+
+@keyframes hand {
+  0% {
+    top: 70px;
+  }
+  100% {
+    top: 30px;
+  }
+}

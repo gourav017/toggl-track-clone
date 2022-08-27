@@ -10,7 +10,7 @@ function Navbar() {
       <div
         style={
           screen > 900
-            ? { position: "sticky", width: "100%", top: "0" }
+            ? { position: "sticky", width: "100%", top: "0", zIndex: "999" }
             : { width: "100%" }
         }
       >
