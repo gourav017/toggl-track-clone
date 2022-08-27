@@ -9,7 +9,7 @@ const Footer = () => {
     <div>
       <div className="outerDiv">
         <div style={{ padding: "30px 22px" }}>
-          <div>
+          <div style={{ marginBottom: "2rem" }}>
             <svg
               style={{ width: "160px", height: "28px" }}
               viewBox="0 0 167 33"

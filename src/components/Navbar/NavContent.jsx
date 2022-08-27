@@ -26,7 +26,9 @@ const MobileNavContext = (props) => {
         {...props}
       >
         <Box as="a" rel="home">
-          <Logo h="30px" />
+          <Link to="/">
+            <Logo h="30px" />
+          </Link>
         </Box>
         <Box
           visibility={{
@@ -81,7 +83,9 @@ const DesktopNavContent = (props) => {
     >
       <Flex className="nav-content__desktop" align="center" gap="2rem">
         <Box as="a" href="#" rel="home">
-          <Logo h="8" />
+          <Link to="/">
+            <Logo h="8" />
+          </Link>
         </Box>
         <HStack
           as="ul"

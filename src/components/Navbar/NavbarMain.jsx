@@ -6,18 +6,20 @@ import { useScreenWidth } from "../../hooks/useScreenWidth";
 export default function NavbarMain() {
   const { screen } = useScreenWidth();
   return (
-    <div>
+    <div style={{ position: "relative", top: "0", width: "100%" }}>
       <Box>
         <Box
           as="header"
-          bg={mode("#2c1438", "white")}
-          position="relative"
-          zIndex="10"
+          bg={
+            screen > 800 ? mode("#2c1438", "white") : mode("#fce4d8", "black")
+          }
         >
           <Box
             as="nav"
             aria-label="Main navigation"
             mx="auto"
+            position="relative"
+            zIndex="10"
             px={{
               base: "6",
               md: "8",
