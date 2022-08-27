@@ -1,7 +1,7 @@
 import { Flex,Text,Box,Center } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { formatAMPM } from './Time'
-import { BsFillTagFill, BsCurrencyDollar, BsFolderFill } from "react-icons/bs";
+import { BsFillTagFill, BsCurrencyDollar, BsFolderFill, BsThreeDotsVertical } from "react-icons/bs";
 import { AiFillPlayCircle } from "react-icons/ai";
 
 
@@ -16,7 +16,7 @@ import { AiFillPlayCircle } from "react-icons/ai";
     {data.map((e)=>{
       return (
         <Flex
-        key={e.id}
+          key={e.id}
           color="white"
           _hover={{ color: "#7e6e85" }}
           h="60px"
@@ -50,6 +50,10 @@ import { AiFillPlayCircle } from "react-icons/ai";
 
             <Center>
               <AiFillPlayCircle />
+            </Center>
+
+            <Center>
+              <BsThreeDotsVertical />
             </Center>
           </Flex>
         </Flex>

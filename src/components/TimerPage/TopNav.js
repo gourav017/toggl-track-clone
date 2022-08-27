@@ -34,7 +34,7 @@ const TopNav = () => {
     };
 
      let getdata = () => {
-       axios.get("http://localhost:8080/mind").then((res) => setData(res.data));
+       axios.get("http://localhost:8080/timer").then((res) => setData(res.data));
      };
 
     const stop = () => {

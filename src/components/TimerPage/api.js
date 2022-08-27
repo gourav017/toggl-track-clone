@@ -1,7 +1,7 @@
 import axios from 'axios'
 export const postdata = (send) => {
   axios
-    .post("http://localhost:8080/mind", send)
+    .post("http://localhost:8080/timer", send)
     .then((res) => console.log("done"));
 };
 export function msToTime(duration) {
