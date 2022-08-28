@@ -33,7 +33,7 @@ const TopNav = () => {
   };
 
   let getdata = () => {
-    axios.get("http://localhost:8080/timer").then((res) => setData(res.data));
+    axios.get("https://arcane-earth-23412.herokuapp.com/timer").then((res) => setData(res.data));
   };
 
   const stop = () => {

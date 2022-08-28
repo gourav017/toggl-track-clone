@@ -17,12 +17,12 @@ const Client = () => {
  let [client, setClient] = useState([]);
 
   const postData=(post)=>{
-       axios.post("http://localhost:8080/client",post)
+       axios.post("https://arcane-earth-23412.herokuapp.com/client",post)
   }
   
   const getData=()=>{
     axios
-      .get("http://localhost:8080/client")
+      .get("https://arcane-earth-23412.herokuapp.com/client")
       .then((res) => setClient(res.data));
   }
 
