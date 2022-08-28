@@ -51,7 +51,7 @@ const ProductForm = ({id,edit}) => {
 
   return (
     <>
-      <Button onClick={onOpen} bg="pink.600"> + New Project
+      <Button marginRight="20px" onClick={onOpen} bg="pink.600"> + New Project
       
       </Button>
 

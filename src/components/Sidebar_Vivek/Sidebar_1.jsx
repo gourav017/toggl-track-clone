@@ -33,6 +33,9 @@ export const Sidebar_1 = () => {
     const toProduct=()=>{
       
     }
+    const [timer,setTimer]=React.useState(true)
+    const [project,setProject]=React.useState(false)
+    const [client,setClient]=React.useState(false)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleSubmit = (e) => {
@@ -40,6 +43,26 @@ export const Sidebar_1 = () => {
       dispatch(logoutAPI());
       navigate("/")
     };
+    const handleClickProject=()=>{
+      setProject(true)
+      setTimer(false)
+      setClient(false)
+
+    }
+    const handleClickTimer=()=>{
+      setTimer(true)
+      setClient(false)
+      setProject(false)
+      
+
+    }
+    const handleClickClient=()=>{
+      setClient(true)
+      setTimer(false)
+      setProject(false)
+
+    }
+    
   return (
     <Flex
       height="100vh"
@@ -107,15 +130,17 @@ export const Sidebar_1 = () => {
       <Stack spacing={6}>
         <Stack>
         <Text fontSize='11px' color="#827188">TRACK</Text>
-        <Link to="/product"><NavLink fontSize="14px" label="Timer" icon={GoClock} isActive /></Link>
+        <Link to="/timer"><NavLink onClick={handleClickTimer} isActive={timer} fontSize="14px" color="#fce5d8"  label="Timer" icon={GoClock} /></Link>
           
           
           <Text fontSize='11px' color="#827188">ANALYZE</Text>
           <NavLink fontSize="14px"  label="Reports" color="#fce5d8" icon={TbReport} />
           <NavLink fontSize="14px" label="Insights" color="#fce5d8" icon={MdInsights} />
           <Text fontSize='11px' color="#827188">MANAGE</Text>
-          <NavLink to="/product" fontSize="14px" label="Projects" color="#fce5d8" icon={BsFillFileEarmarkCheckFill} />
-          <NavLink fontSize="14px" label="Clients" color="#fce5d8" icon={RiContactsBook2Fill} />
+          <Link to="/project"><NavLink onClick={handleClickProject} isActive={project} fontSize="14px" label="Projects" color="#fce5d8" icon={BsFillFileEarmarkCheckFill} /></Link>
+          
+          <Link to="/client"><NavLink onClick={handleClickClient} isActive={client} fontSize="14px" label="Clients" color="#fce5d8" icon={RiContactsBook2Fill} /></Link>
+          
           <NavLink fontSize="14px" label="Team" color="#fce5d8" icon={RiTeamFill} />
           <NavLink fontSize="14px" label="Tags" color="#fce5d8" icon={BsFillTagFill} />
         </Stack>

@@ -12,6 +12,8 @@ import Timer from "../pages/Timer/SidebarApp";
 import { Sidebar_1 } from "../components/Sidebar_Vivek/Sidebar_1";
 import SidebarApp from "../pages/Timer/SidebarApp";
 import Temp from "../pages/Timer/Temp";
+import ClientMain from "../components/Client/ClientMain";
+import TimerMain from "../components/TimerPage/TimerMain";
 
 const AllRoutes = () => {
   return (
@@ -48,7 +50,7 @@ const AllRoutes = () => {
           }
         ></Route>
         <Route
-          path="/timer"
+          path="/project"
           element={
             <RequireAuth>
               <Temp/>
@@ -60,6 +62,22 @@ const AllRoutes = () => {
           element={
             <RequireAuth>
               <Temp/>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/client"
+          element={
+            <RequireAuth>
+              <ClientMain/>
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/timer"
+          element={
+            <RequireAuth>
+              <TimerMain/>
             </RequireAuth>
           }
         />

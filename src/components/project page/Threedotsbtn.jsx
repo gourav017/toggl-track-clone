@@ -11,6 +11,7 @@ import {
   PopoverAnchor,
   Button,
   Icon,
+  Center,
 } from "@chakra-ui/react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useDispatch } from "react-redux";
@@ -40,11 +41,9 @@ const Threedotsbtn = ({
   return (
     <Popover>
       <PopoverTrigger>
-        <Button>
-          <Icon>
-            <BsThreeDotsVertical />
-          </Icon>
-        </Button>
+        <Center >
+          <BsThreeDotsVertical />
+        </Center>
       </PopoverTrigger>
       <PopoverContent pt={10}>
         <PopoverArrow />

@@ -25,27 +25,25 @@ const Products = () => {
   console.log(data);
 
   return (
-    <div style={{backgroundColor: 'white'}}>
-      {data.map((d) => (
-        <TableContainer>
-          <Table
-            size="sm"
-          >
-            <Thead>
-              <Tr>
-                <Th>PROJECT</Th>
-                <Th>CLIENT</Th>
-                <Th isNumeric>TIME STATUS</Th>
-                <Th>BILLABLE STATUS</Th>
-                <Th>TEAM</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td>{d.product_name}</Td>
-                <Td>{d.client}</Td>
-                <Td>{d.time}</Td>
-                <Td>{d.Billable_rate}</Td>
+    <div>
+      <TableContainer bg="white" color="black" height='87vh'>
+        <Table size="sm">
+          <Thead h='70px'>
+            <Tr>
+              <Th>PROJECT</Th>
+              <Th>CLIENT</Th>
+              <Th>TIME STATUS</Th>
+              <Th>BILLABLE STATUS</Th>
+              <Th>TEAM</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {data.map((d) => (
+              <Tr cursor="pointer" color="white" _hover={{ color: "black" }}>
+                <Td color="black">{d.product_name}</Td>
+                <Td color="black">{d.client}</Td>
+                <Td color="black">{d.time}</Td>
+                <Td color="black">{d.Billable_rate}</Td>
                 <Td>
                   <Threedotsbtn
                     id={d.id}
@@ -57,10 +55,10 @@ const Products = () => {
                   />
                 </Td>
               </Tr>
-            </Tbody>
-          </Table>
-        </TableContainer>
-      ))}
+            ))}
+          </Tbody>
+        </Table>
+      </TableContainer>
     </div>
   );
 };
