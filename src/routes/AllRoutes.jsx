@@ -8,6 +8,10 @@ import NavbarProduct from "../components/project page/NavbarProduct";
 import Navbar from "../components/Navbar/Navbar";
 import RequireAuth from "../hoc/RequireAuth";
 import Products from "../components/project page/Products";
+import Timer from "../pages/Timer/SidebarApp";
+import { Sidebar_1 } from "../components/Sidebar_Vivek/Sidebar_1";
+import SidebarApp from "../pages/Timer/SidebarApp";
+import Temp from "../pages/Timer/Temp";
 
 const AllRoutes = () => {
   return (
@@ -44,14 +48,22 @@ const AllRoutes = () => {
           }
         ></Route>
         <Route
+          path="/timer"
+          element={
+            <RequireAuth>
+              <Temp/>
+            </RequireAuth>
+          }
+        />
+        <Route
           path="/product"
           element={
             <RequireAuth>
-              <NavbarProduct />
-              <Products />
+              <Temp/>
             </RequireAuth>
           }
-        ></Route>
+        />
+        
       </Routes>
     </div>
   );

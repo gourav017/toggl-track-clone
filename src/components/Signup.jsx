@@ -1,29 +1,37 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./Signup.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { Stack } from "@chakra-ui/react";
 import { Box, Flex, Text } from "@chakra-ui/layout";
-import { useForm } from "react-hook-form";
 import axios from "axios";
+import { signUp } from "../store/auth/auth.actions";
 
 const Signup = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-    const url = "Enter your url";
-    axios
-      .post(url, data)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+  const [form, setForm] = useState({});
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const ref = useRef();
+  const hanldeChange = (e) => {
+    let { value, name } = e.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("hidc")
+    console.log("form", form);
+    localStorage.setItem("userData", JSON.stringify(form));
+    const UserInfo = JSON.parse(localStorage.getItem("userData"));
+    console.log("UserInfo", UserInfo);
+    dispatch(signUp(UserInfo));
+   navigate("/login")
+  };
+  
+  
   return (
     <div className="signup">
       <Stack className="signupbox1">
@@ -82,16 +90,20 @@ const Signup = () => {
             </div>
             <br />
             <Box>
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit}>
                 <label htmlFor="">UserName</label>
                 <br />
                 <input
                   type="text"
+                  name="USERNAME"
                   className="inputbox"
                   placeholder="Username"
-                  {...register("name", { required: true })}
+                  onChange={hanldeChange}
+                  ref={ref}
+                  value={form.USERNAME}
+                  // {...register("name", { required: true })}
                 />
-                {errors.name && <span>This field is required</span>}
+                {/* <span>This field is required</span> */}
                 <br />
                 <br />
                 <label htmlFor="">Email</label>
@@ -100,9 +112,13 @@ const Signup = () => {
                   type="text"
                   className="inputbox"
                   placeholder="Email"
-                  {...register("email", { required: true })}
+                  onChange={hanldeChange}
+                  name="Email"
+                  ref={ref}
+                  value={form.Email}
+                  // {...register("email", { required: true })}
                 />
-                {errors.email && <span>This field is required</span>}
+                {/* <span>This field is required</span> */}
                 <br />
                 <br />
                 <label htmlFor="">Password</label>
@@ -111,9 +127,13 @@ const Signup = () => {
                   type="password"
                   className="inputbox"
                   placeholder="password"
-                  {...register("password", { required: true, minLength: 5 })}
+                  name="password"
+                  onChange={hanldeChange}
+                  ref={ref}
+                  value={form.password}
+                  // {...register("password", { required: true, minLength: 5 })}
                 />
-                {errors.password && <span>This field is required</span>}
+                {/* <span>This field is required</span> */}
                 <br />
                 <br />
                 <input

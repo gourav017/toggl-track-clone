@@ -1,32 +1,57 @@
-import React from 'react'
-import {BsFillBellFill,BsFillFileEarmarkCheckFill,BsFillQuestionCircleFill,BsFillCreditCardFill} from 'react-icons/bs';
-import {TbReport} from 'react-icons/tb';
-import {GoClock} from 'react-icons/go';
-import {MdInsights} from 'react-icons/md';
-import {RiContactsBook2Fill,RiTeamFill} from 'react-icons/ri';
-import {FaCheckCircle,FaUserCircle} from 'react-icons/fa';
+import { Box, Divider, Flex, Spacer, Stack, Text } from '@chakra-ui/react'
+import * as React from 'react'
 import {
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-    PopoverHeader,
-    PopoverBody,
-    PopoverFooter,
-    PopoverArrow,
-    PopoverCloseButton,
-    PopoverAnchor,
-    Button,
-    Box,
-    Portal
-  } from '@chakra-ui/react'
+  FaRegBell,
+  FaRegChartBar,
+  FaRegHeart,
+  FaRegPaperPlane,
+  FaRegQuestionCircle,
+  FaUser,
+  FaUserCircle
+} from 'react-icons/fa'
+import {MdInsights} from 'react-icons/md';
+import {BsFillFileEarmarkCheckFill,BsFillTagFill} from 'react-icons/bs';
+import {RiContactsBook2Fill,RiTeamFill} from 'react-icons/ri';
+import {GoClock} from 'react-icons/go';
+import {TbReport} from 'react-icons/tb';
+import { Logo } from './Logo'
+import { NavLink } from './NavLink'
+import { SearchField } from './SearchField'
+import { UserProfile } from './UserProfile'
+import { useDispatch } from "react-redux";
 
-const Sidebar = () => {
+
+import {
+    
+    Button,
+  } from '@chakra-ui/react'
+import { Link, useNavigate } from 'react-router-dom';
+import { logoutAPI } from '../../store/auth/auth.actions';
+
+export const Sidebar_1 = () => {
     const initRef = React.useRef()
+    const toProduct=()=>{
+      
+    }
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      dispatch(logoutAPI());
+      navigate("/")
+    };
   return (
-    <div style={{width:"180px"}}>
-        <div style={{display:"flex",justifyContent:"space-around",alignItems: "center",height:"66px"}}>
-            <div>
-            <svg
+    <Flex
+      height="100vh"
+      width="180px"
+      direction="column"
+      borderRightWidth="1px"
+      px={6}
+      py={8}
+    >
+      <Box mb={8}>
+        {/* <Logo iconColor="blue.600" /> */}
+        <svg
               style={{ width: "100px", height: "23px" }}
               viewBox="0 0 167 33"
               fill="#E57CD8"
@@ -77,105 +102,32 @@ const Sidebar = () => {
                 transform="translate(152.165 3.166)"
               ></path>
             </svg>
-            </div>
-            <div><BsFillBellFill color='rgb(252, 229, 216)'/></div>
-        </div>
-        <div style={{}}>
-            <h5 style={{color:'rgb(252, 229, 216)'}}>Track</h5>
-            <div>
-                <div style={{display:"flex",alignItems: "center"}}>
-                        <div><GoClock color='rgb(252, 229, 216)'/> </div>
-                        <div style={{color:'rgb(252, 229, 216)'}}>TIMER</div>
-                    </div>
-                </div>
-            <h5 style={{color:'rgb(252, 229, 216)'}}>ANALYZE</h5>
-            <div>
-            
-                <div style={{display:"flex",alignItems: "center"}}>
-                    <div><TbReport color='rgb(252, 229, 216)'/> </div>
-                    <div style={{color:'rgb(252, 229, 216)'}}>REPORTS</div>
-                </div>
-                <div style={{display:"flex",alignItems: "center"}}>
-                    <div><MdInsights color='rgb(252, 229, 216)'/> </div>
-                    <div style={{color:'rgb(252, 229, 216)'}}>INSIGHTS</div>
-                </div>
-            </div>
-            <h5 style={{color:'rgb(252, 229, 216)'}}>MANAGE</h5>
-            <div>
-                <div style={{display:"flex",alignItems: "center"}}>
-                    <div><BsFillFileEarmarkCheckFill color='rgb(252, 229, 216)'/> </div>
-                    <div>PROJECTS</div>
-                </div>
-                
-                <div style={{display:"flex",alignItems: "center"}}>
-                    <div><RiContactsBook2Fill color='rgb(252, 229, 216)'/> </div>
-                    <div>Clients</div>
-                </div>
-                <div style={{display:"flex",alignItems: "center"}}>
-                    <div><RiTeamFill color='rgb(252, 229, 216)'/> </div>
-                    <div>Team</div>
-                </div>
-                <div style={{display:"flex",alignItems: "center"}}>
-                    <div><BsFillQuestionCircleFill color='rgb(252, 229, 216)'/> </div>
-                    <div>Help</div>
-                </div>
-                <div style={{display:"flex",alignItems: "center"}}>
-                    <div><BsFillCreditCardFill color='rgb(252, 229, 216)'/> </div>
-                    <div>Subscription</div>
-                </div>
-            </div>
-        </div>
-        <div className='trial'>
-            <div style={{padding:"8px 20px 13px"}}>
-                <h2>Trial: 30 days left</h2>
-                <p>Upgrade today</p>
-            </div>
-                
-                
-                <div style={{display:"flex",alignItems: "center",padding:"10px 20px",justifyContent: "space-around"}}>
-                    <FaCheckCircle color='rgb(252, 229, 216)'/>
-                    <p style={{fontSize:"12px"}}>Resume onboarding</p>
-                </div>
-        </div>
-        <h5>WORKSPACE</h5>
-        <div style={{display:"flex",alignItems: "center",justifyContent:"space-around"}}>
-            <div>User </div>
-            <div>
-                    <Popover closeOnBlur={false} placement='right-end' initialFocusRef={initRef}>
-                    {({ isOpen, onClose }) => (
-                        <>
-                        <PopoverTrigger>
-                            {/* <Button><FaUserCircle/> </Button> */}
-                            <FaUserCircle size="25" color='rgb(252, 229, 216)'/> 
-                        </PopoverTrigger>
-                        <Portal>
-                            <PopoverContent>
-                            <PopoverHeader>This is the header</PopoverHeader>
-                            <PopoverCloseButton />
-                            <PopoverBody>
-                                <Box>
-                                Hello. Nice to meet you! This is the body of the popover
-                                </Box>
-                                <Button
-                                mt={4}
-                                colorScheme='blue'
-                                onClick={onClose}
-                                ref={initRef}
-                                >
-                                Close
-                                </Button>
-                            </PopoverBody>
-                            <PopoverFooter>This is the footer</PopoverFooter>
-                            </PopoverContent>
-                        </Portal>
-                        </>
-                    )}
-                    </Popover>
-            </div>
-                
-        </div>
-    </div>
+      </Box>
+      {/* <SearchField mb={6} /> */}
+      <Stack spacing={6}>
+        <Stack>
+        <Text fontSize='11px' color="#827188">TRACK</Text>
+        <Link to="/product"><NavLink fontSize="14px" label="Timer" icon={GoClock} isActive /></Link>
+          
+          
+          <Text fontSize='11px' color="#827188">ANALYZE</Text>
+          <NavLink fontSize="14px"  label="Reports" color="#fce5d8" icon={TbReport} />
+          <NavLink fontSize="14px" label="Insights" color="#fce5d8" icon={MdInsights} />
+          <Text fontSize='11px' color="#827188">MANAGE</Text>
+          <NavLink to="/product" fontSize="14px" label="Projects" color="#fce5d8" icon={BsFillFileEarmarkCheckFill} />
+          <NavLink fontSize="14px" label="Clients" color="#fce5d8" icon={RiContactsBook2Fill} />
+          <NavLink fontSize="14px" label="Team" color="#fce5d8" icon={RiTeamFill} />
+          <NavLink fontSize="14px" label="Tags" color="#fce5d8" icon={BsFillTagFill} />
+        </Stack>
+        <Divider />
+        <Stack>
+          <NavLink fontSize="14px" label="Notifications" color="#fce5d8" icon={FaRegBell} />
+          <NavLink fontSize="14px" label="Help" color="#fce5d8" icon={FaRegQuestionCircle} />
+        </Stack>
+      </Stack>
+      <Spacer />
+      
+      <Button onClick={handleSubmit} fontSize="14px">Logout</Button>
+    </Flex>
   )
 }
-
-export default Sidebar
