@@ -76,6 +76,7 @@ function Homepage() {
                         border: "1px solid gray",
                         padding: "0.75rem 1.5rem",
                         width: "100%",
+                        color:"#FCE5D8"
                       }}
                       type="text"
                   className="inputbox"
@@ -93,6 +94,7 @@ function Homepage() {
                         border: "1px solid gray",
                         padding: "0.75rem 1.5rem",
                         width: "100%",
+                        color:"#FCE5D8"
                       }}
                       type="password"
                   className="inputbox"
