@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import TimerBox from "./Homepage/TimerBox";
 import { FaGoogle, FaApple } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { GoMail } from "react-icons/go";
 import { BsClockHistory, BsShieldCheck, BsStars } from "react-icons/bs";
 import { useScreenWidth } from "../hooks/useScreenWidth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { signUp } from "../store/auth/auth.actions";
 function Homepage() {
   const { screen } = useScreenWidth();
+
+  const [form, setForm] = useState({});
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const ref = useRef();
+  const hanldeChange = (e) => {
+    let { value, name } = e.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    localStorage.setItem("userData", JSON.stringify(form));
+    const UserInfo = JSON.parse(localStorage.getItem("userData"));
+    dispatch(signUp(UserInfo));
+    navigate("/login");
+  };
   return (
     <div>
       <div>
@@ -43,7 +66,7 @@ function Homepage() {
                 Join 5 million users in using the world's best time tracking
                 software
               </p>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div style={{ padding: "2rem" }}>
                   {/* input-box */}
                   <div>
@@ -54,8 +77,13 @@ function Homepage() {
                         padding: "0.75rem 1.5rem",
                         width: "100%",
                       }}
-                      type="email"
-                      placeholder="Email"
+                      type="text"
+                  className="inputbox"
+                  placeholder="Email"
+                  onChange={hanldeChange}
+                  name="Email"
+                  ref={ref}
+                  value={form.Email}
                     />
                     <br />
                     <br />
@@ -67,7 +95,12 @@ function Homepage() {
                         width: "100%",
                       }}
                       type="password"
-                      placeholder="Strong password"
+                  className="inputbox"
+                  placeholder="password"
+                  name="password"
+                  onChange={hanldeChange}
+                  ref={ref}
+                  value={form.password}
                     />
                     <br />
                     <br />
@@ -81,7 +114,7 @@ function Homepage() {
                     }
                   >
                     <div style={{ marginBottom: "2rem" }}>
-                      <button
+                      <button 
                         style={
                           screen > 800
                             ? {
