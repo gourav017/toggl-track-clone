@@ -1,57 +1,55 @@
-import {  Center, Flex, Text ,Box,Input } from '@chakra-ui/react';
+import { Center, Flex, Text, Box, Input } from "@chakra-ui/react";
 import axios from "axios";
-import React, {  useRef, useState } from 'react'
+import React, { useRef, useState } from "react";
 import {
   BsFolderFill,
   BsFillTagFill,
   BsCurrencyDollar,
-  BsArrowRight
+  BsArrowRight,
 } from "react-icons/bs";
-import {GrAddCircle} from 'react-icons/gr'
+import { GrAddCircle } from "react-icons/gr";
 import { AiFillPlayCircle } from "react-icons/ai";
-import { formatAMPM } from './Time';
-import Googlestop from './GoogleStop';
-import SubNav from './SubNav';
-import Scheduler from './Scheduler';
-import { msToTime, postdata } from './api';
+import { formatAMPM } from "./Time";
+import Googlestop from "./GoogleStop";
+import SubNav from "./SubNav";
+import Scheduler from "./Scheduler";
+import { msToTime, postdata } from "./api";
 // import { Text } from '@chakra-ui/react';
 
 const TopNav = () => {
+  const [watch, setWatch] = useState(0);
+  const [text, setText] = useState("");
+  const [send, setSend] = useState({});
+  let [data, setData] = useState([]);
+  const id = useRef(null);
 
-    const [watch, setWatch] = useState(0);
-    const [text, setText] = useState("");
-    const[send,setSend]=useState({})
-      let [data, setData] = useState([]);
-    const id = useRef(null);
+  console.log(text);
+  const start = () => {
+    if (!id.current) {
+      id.current = setInterval(() => {
+        setWatch((el) => el + 10);
+      }, 10);
+    }
+  };
 
-    console.log(text);
-    const start = () => {
-      if (!id.current) {
-        id.current = setInterval(() => {
-          setWatch((el) => el + 10);
-        }, 10);
-      }
-    };
+  let getdata = () => {
+    axios.get("http://localhost:8080/timer").then((res) => setData(res.data));
+  };
 
-     let getdata = () => {
-       axios.get("http://localhost:8080/timer").then((res) => setData(res.data));
-     };
+  const stop = () => {
+    postdata({ id: Date.now(), project: text, stopat: msToTime(watch) });
+    getdata();
+    clearInterval(id.current);
+    id.current = null;
+    setSend();
 
-    const stop = () => {
-      postdata({ id: Date.now(), project: text ,stopat:msToTime(watch)});
-      getdata()
-      clearInterval(id.current);
-      id.current = null;
-      setSend()
-      
-      setText("")
-    };
+    setText("");
+  };
 
-
-    let project=true
-  let [timer ,setTimer ]= useState(false)
+  let project = true;
+  let [timer, setTimer] = useState(false);
   return (
-    <>
+    <div>
       <Flex
         position="sticky"
         h="90px"
@@ -59,10 +57,14 @@ const TopNav = () => {
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px;"
         p="10px 2px 10px 10px"
         bg="white"
-        width="1290px"
       >
         <Center w="20%">
-          <Input placeholder="What have you done ?" border="none" value={text} onChange={(e)=>setText(e.target.value)} />
+          <Input
+            placeholder="What have you done ?"
+            border="none"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
         </Center>
         <Center w="23%"></Center>
         <Center flex="1">
@@ -140,9 +142,9 @@ const TopNav = () => {
         </Center>
       </Flex>
       <SubNav />
-      <Scheduler getdata={getdata} data={data}/>
-    </>
+      <Scheduler getdata={getdata} data={data} />
+    </div>
   );
-}
+};
 
-export default TopNav
+export default TopNav;

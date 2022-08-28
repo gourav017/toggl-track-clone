@@ -3,14 +3,9 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  PopoverHeader,
-  PopoverBody,
-  PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
-  PopoverAnchor,
   Button,
-  Icon,
   Center,
 } from "@chakra-ui/react";
 import { BsThreeDotsVertical } from "react-icons/bs";
@@ -19,7 +14,7 @@ import {
   DeleteproductApi,
   GetproductApi,
 } from "../../store/productreducer/products.action";
-import ProductForm from "./productsForm/ProductForm";
+// import ProductForm from "./productsForm/ProductForm";
 import EditdataForm from "./productsForm/EditdataForm";
 
 const Threedotsbtn = ({
@@ -36,16 +31,23 @@ const Threedotsbtn = ({
     dispatch(DeleteproductApi(id)).then(() => dispatch(GetproductApi()));
   };
 
-  let edit = true;
+  // let edit = true;
 
   return (
     <Popover>
       <PopoverTrigger>
-        <Center >
+        <Center>
           <BsThreeDotsVertical />
         </Center>
       </PopoverTrigger>
-      <PopoverContent pt={10}>
+      <PopoverContent
+        width="10rem"
+        paddingLeft={3}
+        paddingRight={3}
+        paddingBottom={3}
+        pt={10}
+        mb={10}
+      >
         <PopoverArrow />
         <PopoverCloseButton />
         <Button
@@ -53,8 +55,9 @@ const Threedotsbtn = ({
           variant="outline"
           onClick={() => handledelete(id)}
         >
-          delete
+          Delete
         </Button>
+        <br />
         <EditdataForm
           id={editid}
           product_name={product_name}

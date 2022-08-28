@@ -16,7 +16,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submit")
+    console.log("Submit");
     dispatch(loginAPI(loginCreds));
   };
   const hanldeChange = (e) => {
@@ -28,12 +28,14 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (isAuth && Saved_data.Email == loginCreds.email && Saved_data.password == loginCreds.password) 
-    {
-      return  navigate( "/timer", { replace: true });
-    } 
+    if (
+      isAuth &&
+      Saved_data.Email === loginCreds.email &&
+      Saved_data.password === loginCreds.password
+    ) {
+      return navigate("/timer", { replace: true });
+    }
   }, [isAuth, Saved_data, loginCreds, location, navigate]);
-
 
   return (
     <div className="login">

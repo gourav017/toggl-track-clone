@@ -4,13 +4,8 @@ import Login from "../components/Login";
 import Signup from "../components/Signup";
 import Footer from "../components/Footer/Footer";
 import Homepage from "../pages/Homepage";
-import NavbarProduct from "../components/project page/NavbarProduct";
 import Navbar from "../components/Navbar/Navbar";
 import RequireAuth from "../hoc/RequireAuth";
-import Products from "../components/project page/Products";
-import Timer from "../pages/Timer/SidebarApp";
-import { Sidebar_1 } from "../components/Sidebar_Vivek/Sidebar_1";
-import SidebarApp from "../pages/Timer/SidebarApp";
 import Temp from "../pages/Timer/Temp";
 import ClientMain from "../components/Client/ClientMain";
 import TimerMain from "../components/TimerPage/TimerMain";
@@ -53,7 +48,7 @@ const AllRoutes = () => {
           path="/project"
           element={
             <RequireAuth>
-              <Temp/>
+              <Temp />
             </RequireAuth>
           }
         />
@@ -61,7 +56,7 @@ const AllRoutes = () => {
           path="/product"
           element={
             <RequireAuth>
-              <Temp/>
+              <Temp />
             </RequireAuth>
           }
         />
@@ -69,7 +64,7 @@ const AllRoutes = () => {
           path="/client"
           element={
             <RequireAuth>
-              <ClientMain/>
+              <ClientMain />
             </RequireAuth>
           }
         />
@@ -77,11 +72,10 @@ const AllRoutes = () => {
           path="/timer"
           element={
             <RequireAuth>
-              <TimerMain/>
+              <TimerMain />
             </RequireAuth>
           }
         />
-        
       </Routes>
     </div>
   );

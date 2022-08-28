@@ -1,16 +1,10 @@
 import React from "react";
-import { Center, Flex, Text, Container, Button } from "@chakra-ui/react";
-import {
-  AiFillSetting,
-  AiOutlineDown,
-  AiOutlineRight,
-  AiOutlineLeft,
-} from "react-icons/ai";
+import { Center, Flex, Text, Button } from "@chakra-ui/react";
+import { AiOutlineDown } from "react-icons/ai";
 import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import FilterButtons from "./FilterButtons";
 
 const SubNavbar = () => {
-  
   return (
     <Flex
       bg="#fcf7f5"
@@ -40,7 +34,6 @@ const SubNavbar = () => {
           <FilterButtons btnname="Billable" />
           <FilterButtons btnname="Project name" />
         </Center>
-    
       </Flex>
       {/* <Text>(No Project)</Text> */}
     </Flex>

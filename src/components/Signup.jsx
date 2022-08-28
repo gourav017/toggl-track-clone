@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Stack } from "@chakra-ui/react";
 import { Box, Flex, Text } from "@chakra-ui/layout";
-import axios from "axios";
 import { signUp } from "../store/auth/auth.actions";
 
 const Signup = () => {
@@ -22,16 +21,15 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("hidc")
+    console.log("hidc");
     console.log("form", form);
     localStorage.setItem("userData", JSON.stringify(form));
     const UserInfo = JSON.parse(localStorage.getItem("userData"));
     console.log("UserInfo", UserInfo);
     dispatch(signUp(UserInfo));
-   navigate("/login")
+    navigate("/login");
   };
-  
-  
+
   return (
     <div className="signup">
       <Stack className="signupbox1">

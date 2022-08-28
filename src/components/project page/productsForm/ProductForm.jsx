@@ -23,9 +23,12 @@ import {
   AccordionIcon,
 } from "@chakra-ui/accordion";
 import { useDispatch } from "react-redux";
-import { GetproductApi, Postproduct } from "../../../store/productreducer/products.action";
+import {
+  GetproductApi,
+  Postproduct,
+} from "../../../store/productreducer/products.action";
 
-const ProductForm = ({id,edit}) => {
+const ProductForm = ({ id, edit }) => {
   const [form, setform] = useState({});
   const dispatch = useDispatch();
 
@@ -42,17 +45,17 @@ const ProductForm = ({id,edit}) => {
     });
   };
 
-  
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(form);
-    dispatch(Postproduct(form)).then(()=>dispatch(GetproductApi()))
+    dispatch(Postproduct(form)).then(() => dispatch(GetproductApi()));
   };
 
   return (
     <>
-      <Button marginRight="20px" onClick={onOpen} bg="pink.600"> + New Project
-      
+      <Button marginRight="20px" onClick={onOpen} bg="pink.600">
+        {" "}
+        + New Project
       </Button>
 
       <Modal
@@ -157,12 +160,22 @@ const ProductForm = ({id,edit}) => {
                 </AccordionItem>
               </Accordion>
 
-              <input  type="submit" colorScheme="blue" mr={3} onClick={onClose} />
+              <Button
+                type="submit"
+                colorScheme="blue"
+                mt={8}
+                mr={3}
+                onClick={onClose}
+              >
+                Submit
+              </Button>
             </form>
           </ModalBody>
 
           <ModalFooter>
-            <Button onClick={onClose}>Cancel</Button>
+            <Button mt={-120} onClick={onClose}>
+              Cancel
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

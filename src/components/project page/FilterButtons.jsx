@@ -5,29 +5,27 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverBody,
-  PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
-  PopoverAnchor,
   Button,
   Input,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { GetproductApi, SearchbyQueryApi } from "../../store/productreducer/products.action";
+import {
+  GetproductApi,
+  SearchbyQueryApi,
+} from "../../store/productreducer/products.action";
 
-const FilterButtons = ({btnname}) => {
-    const [query, setquery] = useState("")
+const FilterButtons = ({ btnname }) => {
+  const [query, setquery] = useState("");
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const handlesearch =()=>{
-        
-    }
+  const handlesearch = () => {};
 
-    useEffect(() => {
-        dispatch(SearchbyQueryApi()).then(()=>dispatch(GetproductApi()))
-    }, [])
-    
+  useEffect(() => {
+    dispatch(SearchbyQueryApi()).then(() => dispatch(GetproductApi()));
+  }, []);
 
   return (
     <div>
@@ -40,8 +38,12 @@ const FilterButtons = ({btnname}) => {
           <PopoverCloseButton />
           <PopoverHeader>Confirmation!</PopoverHeader>
           <PopoverBody>
-            <Input placeholder="....." value={query} onChange={(e)=>setquery(e.target.value)}/>
-            <Button onClick={handlesearch} >search</Button>
+            <Input
+              placeholder="....."
+              value={query}
+              onChange={(e) => setquery(e.target.value)}
+            />
+            <Button onClick={handlesearch}>search</Button>
           </PopoverBody>
         </PopoverContent>
       </Popover>

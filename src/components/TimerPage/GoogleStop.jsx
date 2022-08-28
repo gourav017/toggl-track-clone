@@ -1,13 +1,11 @@
 import { Text } from "@chakra-ui/react";
-import React, { useRef, useState } from "react";
+import React from "react";
 import { msToTime } from "./api";
 
-const Googlestop = ({watch}) => {
- 
-
+const Googlestop = ({ watch }) => {
   return (
     <div>
-      <Text color='black'>{msToTime(watch)}</Text>
+      <Text color="black">{msToTime(watch)}</Text>
       {/* <button >
         {!watch ? "start" : "stop"}
       </button> */}

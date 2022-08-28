@@ -5,11 +5,9 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
 import Threedotsbtn from "./Threedotsbtn";
@@ -26,9 +24,9 @@ const Products = () => {
 
   return (
     <div>
-      <TableContainer bg="white" color="black" height='87vh'>
+      <TableContainer bg="white" color="black" height="87vh">
         <Table size="sm">
-          <Thead h='70px'>
+          <Thead h="70px">
             <Tr>
               <Th>PROJECT</Th>
               <Th>CLIENT</Th>
