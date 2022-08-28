@@ -1,13 +1,6 @@
 {
   "product-page": [
     {
-      "product_name": "apple clone project",
-      "client": "apple ceo",
-      "time": "60 min",
-      "Billable_rate": "99999",
-      "id": 1
-    },
-    {
       "product_name": "chiken pizza",
       "client": "chikken",
       "time": "12",

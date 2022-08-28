@@ -1,24 +1,23 @@
 import { Flex, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { loginAPI } from "../store/auth/auth.actions";
 import "./Login.css";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const { isAuth } = useSelector((state) => state.auth);
   const [loginCreds, setLoginCreds] = useState({});
   const navigate = useNavigate();
+  const Saved_data = JSON.parse(localStorage.getItem("userData"));
+  // console.log(Saved_data.Email);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Submit")
     dispatch(loginAPI(loginCreds));
-    if (isAuth) {
-      navigate("/product");
-    } else {
-      alert("Please Re-try again");
-      navigate("/signup");
-    }
   };
   const hanldeChange = (e) => {
     const { name, value } = e.target;
@@ -27,6 +26,15 @@ const Login = () => {
       [name]: value,
     });
   };
+
+  useEffect(() => {
+    if (isAuth && Saved_data.Email == loginCreds.email && Saved_data.password == loginCreds.password) 
+    {
+      return  navigate( "/timer", { replace: true });
+    } 
+  }, [isAuth, Saved_data, loginCreds, location, navigate]);
+
+
   return (
     <div className="login">
       <div className="loginbackground">
@@ -68,6 +76,7 @@ const Login = () => {
                 name="email"
                 placeholder="Email"
                 onChange={hanldeChange}
+                value={loginCreds.email}
               />
               {/* {errors.email && <span>This field is required</span>} */}
               <br />
@@ -76,10 +85,11 @@ const Login = () => {
               <br />
               <input
                 className="logininput"
-                type="text"
+                type="password"
                 name="password"
                 placeholder="Password"
                 onChange={hanldeChange}
+                value={loginCreds.password}
               />
               {/* {errors.password && <span>This field is required</span>} */}
               <br />

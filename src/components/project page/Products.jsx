@@ -25,9 +25,9 @@ const Products = () => {
   console.log(data);
 
   return (
-    <div>
+    <div style={{backgroundColor: 'white'}}>
       {data.map((d) => (
-        <TableContainer ml="15%">
+        <TableContainer>
           <Table
             size="sm"
           >

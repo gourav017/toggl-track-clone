@@ -14,9 +14,11 @@ const NavbarProduct = () => {
     let project=false
   return (
     <Flex
-      color="white"
+      // color="white"
+      
+      bg="white"
       h="90px"
-      ml="15%"
+      // ml="15%"
       boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px;"
       p="10px 2px 10px 10px"
       justifyContent="space-between"
