@@ -19,11 +19,11 @@
 ## Tech Stack:
 
 ![Chakra UI](https://img.shields.io/badge/Chakra%20UI-009688?style=for-the-badge&logo=chakraui&logoColor=white)
+![EXPRESS](https://img.shields.io/badge/-Express-191919?style=for-the-badge&logo=express&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/-MongoDB-449D48?style=for-the-badge&logo=mongodb&logoColor=white)
 ![NodeJS](https://img.shields.io/badge/-Node%20js-6EBF20?logo=node.js&logoColor=FFFFFF&style=for-the-badge)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Redux](https://img.shields.io/badge/redux-673AB7?style=for-the-badge&logo=redux)
-![EXPRESS](https://img.shields.io/badge/-Express-191919?style=for-the-badge&logo=express&logoColor=white)
 
 <h1>Snapshots of our project</h1>
 
