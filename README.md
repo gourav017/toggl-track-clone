@@ -38,3 +38,16 @@
 3. Login Page
 
 ![image](assests/Login.png) 
+
+4.Timer Page
+
+![image](assests/timer.png) 
+
+5.Project page
+
+![image](assests/Project-page.png)
+
+6.Client page
+
+![image](assests/Client-page.png)
+
