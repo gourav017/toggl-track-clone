@@ -19,7 +19,6 @@ import EditdataForm from "./productsForm/EditdataForm";
 
 const Threedotsbtn = ({
   id,
-  editid,
   product_name,
   client,
   time,
@@ -59,7 +58,7 @@ const Threedotsbtn = ({
         </Button>
         <br />
         <EditdataForm
-          id={editid}
+          id={id}
           product_name={product_name}
           client={client}
           time={time}

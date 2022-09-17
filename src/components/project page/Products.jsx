@@ -44,8 +44,7 @@ const Products = () => {
                 <Td color="black">{d.Billable_rate}</Td>
                 <Td>
                   <Threedotsbtn
-                    id={d.id}
-                    editid={d.id}
+                    id={d._id}
                     product_name={d.product_name}
                     client={d.client}
                     time={d.time}
