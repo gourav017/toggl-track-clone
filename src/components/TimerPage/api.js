@@ -1,7 +1,7 @@
 import axios from 'axios'
 export const postdata = (send) => {
   axios
-    .post("https://toggletrackbackend.herokuapp.com/mind", send)
+    .post("https://dry-lake-12626.herokuapp.com/mind", send)
     .then((res) => console.log("done"));
 };
 export function msToTime(duration) {
