@@ -33,7 +33,7 @@ const TopNav = () => {
   };
 
   let getdata = () => {
-    axios.get("").then((res) => setData(res.data));
+    axios.get("https://dry-lake-12626.herokuapp.com/timer").then((res) => setData(res.data));
   };
 
   const stop = () => {
