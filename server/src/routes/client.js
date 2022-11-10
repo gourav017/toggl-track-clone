@@ -25,6 +25,7 @@ clientSchema.post("/", async (req, res) => {
   }
 });
 
+
 //delete
 clientSchema.delete("/:id",async(req,res)=>{
   try{
@@ -35,10 +36,15 @@ clientSchema.delete("/:id",async(req,res)=>{
   }
 })
 
-
-
-
 //updated data
+clientSchema.patch("/:id", async (req, res) => {
+  try {
+    await timer.findByIdAndUpdate(req.params.id, { ...req.body });
+    res.send("updated sucessfully");
+  } catch (e) {
+    res.status(401).send(e.message);
+  }
+});
 
 
 

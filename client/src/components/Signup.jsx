@@ -21,12 +21,12 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("hidc");
-    console.log("form", form);
-    localStorage.setItem("userData", JSON.stringify(form));
-    const UserInfo = JSON.parse(localStorage.getItem("userData"));
-    console.log("UserInfo", UserInfo);
-    dispatch(signUp(UserInfo));
+    // console.log("hidc");
+    // console.log("form", form);
+    // localStorage.setItem("userData", JSON.stringify(form));
+    // const UserInfo = JSON.parse(localStorage.getItem("userData"));
+    // console.log("UserInfo", UserInfo);
+    dispatch(signUp(form));
     navigate("/login");
   };
 
@@ -93,12 +93,12 @@ const Signup = () => {
                 <br />
                 <input
                   type="text"
-                  name="USERNAME"
+                  name="name"
                   className="inputbox"
                   placeholder="Username"
                   onChange={hanldeChange}
                   ref={ref}
-                  value={form.USERNAME}
+                  value={form.name}
                   // {...register("name", { required: true })}
                 />
                 {/* <span>This field is required</span> */}
@@ -111,9 +111,9 @@ const Signup = () => {
                   className="inputbox"
                   placeholder="Email"
                   onChange={hanldeChange}
-                  name="Email"
+                  name="email"
                   ref={ref}
-                  value={form.Email}
+                  value={form.email}
                   // {...register("email", { required: true })}
                 />
                 {/* <span>This field is required</span> */}

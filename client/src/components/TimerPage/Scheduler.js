@@ -8,10 +8,15 @@ import {
   BsThreeDotsVertical,
 } from "react-icons/bs";
 import { AiFillPlayCircle } from "react-icons/ai";
+import { GetTIMERApi } from "../../store/timer/timer.action";
+import { useDispatch } from "react-redux";
+import Threedotsbtn from "./Threedots";
 
-const Scheduler = ({ send, getdata, data }) => {
+const Scheduler = ({ send, data }) => {
+  const dispatch = useDispatch()
+  
   useEffect(() => {
-    getdata();
+    dispatch(GetTIMERApi());
   }, []);
   return (
     <div>
@@ -56,8 +61,9 @@ const Scheduler = ({ send, getdata, data }) => {
                 <AiFillPlayCircle />
               </Center>
 
-              <Center>
-                <BsThreeDotsVertical />
+              <Center cursor="pointer">
+                {/* <BsThreeDotsVertical /> */}
+                <Threedotsbtn project={e.project} stopat={e.stopat} id={e._id}/>
               </Center>
             </Flex>
           </Flex>

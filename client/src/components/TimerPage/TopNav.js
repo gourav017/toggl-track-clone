@@ -14,16 +14,20 @@ import Googlestop from "./GoogleStop";
 import SubNav from "./SubNav";
 import Scheduler from "./Scheduler";
 import { msToTime, postdata } from "./api";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { GetTIMERApi, PostTIMER } from "../../store/timer/timer.action";
 // import { Text } from '@chakra-ui/react';
 
 const TopNav = () => {
   const [watch, setWatch] = useState(0);
   const [text, setText] = useState("");
   const [send, setSend] = useState({});
-  let [data, setData] = useState([]);
   const id = useRef(null);
+const dispatch = useDispatch()
+const {data} = useSelector(state=>state.timer)
 
-  console.log(text);
+  // console.log(data);
   const start = () => {
     if (!id.current) {
       id.current = setInterval(() => {
@@ -32,17 +36,17 @@ const TopNav = () => {
     }
   };
 
-  let getdata = () => {
-    axios.get("https://dry-lake-12626.herokuapp.com/mind").then((res) => setData(res.data));
-  };
+  useEffect(()=>{
+  dispatch(GetTIMERApi())
+  },[])
 
   const stop = () => {
-    postdata({ id: Date.now(), project: text, stopat: msToTime(watch) });
-    getdata();
+    dispatch(
+      PostTIMER({ id: Date.now(), project: text, stopat: msToTime(watch) })
+    ).then(()=>dispatch(GetTIMERApi()))
     clearInterval(id.current);
     id.current = null;
     setSend();
-
     setText("");
   };
 
@@ -53,7 +57,6 @@ const TopNav = () => {
       <Flex
         position="sticky"
         h="90px"
-        // ml="15%"
         boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px;"
         p="10px 2px 10px 10px"
         bg="white"
@@ -142,7 +145,9 @@ const TopNav = () => {
         </Center>
       </Flex>
       <SubNav />
-      <Scheduler getdata={getdata} data={data} />
+      <Scheduler 
+      // getdata={getdata}
+       data={data} />
     </div>
   );
 };

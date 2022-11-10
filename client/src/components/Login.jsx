@@ -7,18 +7,20 @@ import "./Login.css";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const location = useLocation();
   const { isAuth } = useSelector((state) => state.auth);
   const [loginCreds, setLoginCreds] = useState({});
   const navigate = useNavigate();
-  const Saved_data = JSON.parse(localStorage.getItem("userData"));
-  // console.log(Saved_data.Email);
+
+  // const token= localStorage.getItem("token")
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submit");
     dispatch(loginAPI(loginCreds));
+      
   };
+
   const hanldeChange = (e) => {
     const { name, value } = e.target;
     setLoginCreds({
@@ -27,17 +29,12 @@ const Login = () => {
     });
   };
 
-  useEffect(() => {
-    if (
-      isAuth &&
-      Saved_data.Email === loginCreds.email &&
-      Saved_data.password === loginCreds.password
-    ) {
-      return navigate("/timer", { replace: true });
-    }
-  }, [isAuth, Saved_data, loginCreds, location, navigate]);
+  
+
+
 
   return (
+    isAuth && isAuth.length >0 ? navigate("/timer") :
     <div className="login">
       <div className="loginbackground">
         <Text className="text1">Log in to your account</Text>

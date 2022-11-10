@@ -1,4 +1,13 @@
-import { Button, Center, Flex, FormControl, FormLabel, Input, Text, useDisclosure } from "@chakra-ui/react";
+import {
+  Button,
+  Center,
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import {
   Modal,
   ModalOverlay,
@@ -9,31 +18,29 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import BelowClient from "./BelowClient";
 
 const Client = () => {
- const [inputext,setInputext]= useState("")
- let [client, setClient] = useState([]);
+  const [inputext, setInputext] = useState("");
+  let [client, setClient] = useState([]);
 
-  const postData=(post)=>{
-       axios.post("https://dry-lake-12626.herokuapp.com/client",post)
-  }
-  
-  const getData=()=>{
+  const postData = (post) => {
+    axios.post("https://damp-mesa-49161.herokuapp.com/client", post);
+  };
+
+  const getData = () => {
     axios
-      .get("https://dry-lake-12626.herokuapp.com/client")
+      .get("https://damp-mesa-49161.herokuapp.com/client")
       .then((res) => setClient(res.data));
-  }
+  };
 
-    const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   return (
-    <div
-      style={{ backgroundColor: "#fef9f7", height: "100vh" }}
-    >
+    <div style={{ backgroundColor: "#fef9f7", height: "100vh" }}>
       <>
         <Flex
           bg="white"
@@ -85,8 +92,8 @@ const Client = () => {
                   colorScheme="pink"
                   mr={3}
                   onClick={() => {
-                    postData({ client: inputext, id: Date.now() })
-                     getData();
+                    postData({ client: inputext, id: Date.now() });
+                    getData();
                   }}
                 >
                   Submit
@@ -99,9 +106,6 @@ const Client = () => {
       </>
     </div>
   );
-}
+};
 
-export default Client
-
-
-
+export default Client;

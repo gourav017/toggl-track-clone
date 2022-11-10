@@ -20,7 +20,7 @@ const Products = () => {
     dispatch(GetproductApi());
   }, []);
 
-  console.log(data);
+
 
   return (
     <div>

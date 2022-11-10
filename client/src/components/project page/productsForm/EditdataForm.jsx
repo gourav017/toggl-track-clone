@@ -58,6 +58,7 @@ const EditdataForm = ({
   };
 
   const handleSubmit = (e) => {
+    console.log(id,form);
     e.preventDefault();
     // console.log(form);
     dispatch(EditProductApi(id,form)).then(()=>dispatch(GetproductApi()))
